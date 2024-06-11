@@ -1,7 +1,5 @@
 from django.db import models
 
-from django.db import models
-
 class Estados(models.Model):
     idestados = models.AutoField(primary_key=True)
     estado = models.CharField(max_length=200)
