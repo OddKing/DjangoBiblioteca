@@ -1,12 +1,12 @@
 from django.contrib import admin
-from .models import Estados, TipoUsuario, Usuario, Login, Libro, StockLibro, Prestamo, Renovacion, Deuda
+from .models import Estados, TipoUsuarios, Usuarios, Login, Libros, StockLibros, Prestamos, Renovaciones, Deudas
 
 admin.site.register(Estados)
-admin.site.register(TipoUsuario)
-admin.site.register(Usuario)
+admin.site.register(TipoUsuarios)
+admin.site.register(Usuarios)
 admin.site.register(Login)
-admin.site.register(Libro)
-admin.site.register(StockLibro)
-admin.site.register(Prestamo)
-admin.site.register(Renovacion)
-admin.site.register(Deuda)
+admin.site.register(Libros)
+admin.site.register(StockLibros)
+admin.site.register(Prestamos)
+admin.site.register(Renovaciones)
+admin.site.register(Deudas)
