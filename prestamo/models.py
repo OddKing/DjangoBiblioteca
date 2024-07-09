@@ -1,7 +1,7 @@
 from django.db import models
 
-class Estados(models.Model):
-    idestados = models.AutoField(primary_key=True)
+class Estado(models.Model):
+    idestado = models.AutoField(primary_key=True)
     estado = models.CharField(max_length=200)
 
     class Meta:
@@ -11,7 +11,7 @@ class Estados(models.Model):
     def __str__(self):
         return self.estado
 
-class TipoUsuarios(models.Model):
+class TipoUsuario(models.Model):
     idTipoUsuario = models.AutoField(primary_key=True)
     TipoUsuario = models.CharField(max_length=200)
 
@@ -22,13 +22,13 @@ class TipoUsuarios(models.Model):
     def __str__(self):
         return self.TipoUsuario
 
-class Usuarios(models.Model):
+class Usuario(models.Model):
     RUT = models.CharField(max_length=15, primary_key=True)
     nombre = models.CharField(max_length=255)
-    idTipoUsuario = models.ForeignKey(TipoUsuarios, on_delete=models.CASCADE)
+    idTipoUsuario = models.ForeignKey(TipoUsuario, on_delete=models.CASCADE)
     contacto = models.CharField(max_length=255)
     correo = models.CharField(max_length=255)
-    idEstado = models.ForeignKey(Estados, on_delete=models.CASCADE)
+    idEstado = models.ForeignKey(Estado, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = "Usuario"
@@ -47,7 +47,7 @@ class Login(models.Model):
         verbose_name = "Login"
         verbose_name_plural = "Logins"
 
-class Libros(models.Model):
+class Libro(models.Model):
     codigoLibro = models.AutoField(primary_key=True)
     titulo = models.CharField(max_length=255)
     autor = models.CharField(max_length=255)
@@ -60,45 +60,45 @@ class Libros(models.Model):
     def __str__(self):
         return self.titulo
 
-class StockLibros(models.Model):
-    codigoLibro = models.OneToOneField(Libros, on_delete=models.CASCADE, primary_key=True)
+class StockLibro(models.Model):
+    codigoLibro = models.OneToOneField(Libro, on_delete=models.CASCADE, primary_key=True)
     cantidadDisponible = models.IntegerField()
 
     class Meta:
         verbose_name = "Stock de Libro"
         verbose_name_plural = "Stocks de Libros"
 
-class Prestamos(models.Model):
+class Prestamo(models.Model):
     idPrestamo = models.AutoField(primary_key=True)
-    codigoLibro = models.ForeignKey(Libros, on_delete=models.CASCADE)
-    RUTUsuario = models.ForeignKey(Usuarios, on_delete=models.CASCADE)
+    codigoLibro = models.ForeignKey(Libro, on_delete=models.CASCADE)
+    RUTUsuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     fechaPrestamo = models.DateField()
     fechaVencimiento = models.DateField()
     fechaDevolucion = models.DateField(null=True, blank=True)
-    idEstado = models.ForeignKey(Estados, on_delete=models.CASCADE)
+    idEstado = models.ForeignKey(Estado, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = "Préstamo"
         verbose_name_plural = "Préstamos"
 
-class Renovaciones(models.Model):
+class Renovacione(models.Model):
     idRenovacion = models.AutoField(primary_key=True)
-    idPrestamo = models.ForeignKey(Prestamos, on_delete=models.CASCADE)
+    idPrestamo = models.ForeignKey(Prestamo, on_delete=models.CASCADE)
     fechaRenovacion = models.DateField()
     fechaVencimiento = models.DateField()
-    idEstado = models.ForeignKey(Estados, on_delete=models.CASCADE)
+    idEstado = models.ForeignKey(Estado, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = "Renovación"
         verbose_name_plural = "Renovaciones"
 
-class Deudas(models.Model):
+class Deuda(models.Model):
     idDeuda = models.AutoField(primary_key=True)
-    RUTUsuario = models.ForeignKey(Usuarios, on_delete=models.CASCADE)
-    idPrestamoLibro = models.ForeignKey(Prestamos, on_delete=models.CASCADE)
+    RUTUsuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    idPrestamoLibro = models.ForeignKey(Prestamo, on_delete=models.CASCADE)
     diasRetraso = models.IntegerField()
     montoDeuda = models.IntegerField()
-    idEstado = models.ForeignKey(Estados, on_delete=models.CASCADE)
+    idEstado = models.ForeignKey(Estado, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = "Deuda"
