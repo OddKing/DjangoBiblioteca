@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Listado de Préstamos</h2>
+
+<form method="get">
+    <label for="fecha">Fecha:</label>
+    <input type="date" id="fecha" name="fecha" value="{{ fecha_seleccionada|date:'Y-m-d' }}">
+    
+    <label for="tipo_usuario">Tipo de Usuario:</label>
+    <select id="tipo_usuario" name="tipo_usuario">
+        <option value="">Todos</option>
+        {% for tipo in tipos_usuario %}
+            <option value="{{ tipo.TipoUsuario }}" {% if tipo.TipoUsuario == tipo_usuario_seleccionado %}selected{% endif %}>
+                {{ tipo.TipoUsuario }}
+            </option>
+        {% endfor %}
+    </select>
+    
+    <button type="submit">Filtrar</button>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID Préstamo</th>
+            <th>Libro</th>
+            <th>Usuario</th>
+            <th>Tipo Usuario</th>
+            <th>Fecha Préstamo</th>
+            <th>Fecha Vencimiento</th>
+            <th>Fecha Devolución</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for prestamo in prestamos %}
+        <tr>
+            <td>{{ prestamo.idPrestamo }}</td>
+            <td>{{ prestamo.codigoLibro.titulo }}</td>
+            <td>{{ prestamo.RUTUsuario.nombre }}</td>
+            <td>{{ prestamo.RUTUsuario.idTipoUsuario.TipoUsuario }}</td>
+            <td>{{ prestamo.fechaPrestamo }}</td>
+            <td>{{ prestamo.fechaVencimiento }}</td>
+            <td>{{ prestamo.fechaDevolucion|default_if_none:"-" }}</td>
+            <td>{{ prestamo.idEstado.estado }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="8">No se encontraron préstamos con los criterios seleccionados.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
