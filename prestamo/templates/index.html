@@ -1,16 +1,32 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de Inicio</title>
+    <title>Librería INACAP</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <h1>{{ mensaje }}</h1>
-    <p>¡Esta es nuestra primera página en Django!</p>
+    <header>
+        <img src="{% static 'img/logo.png' %}" alt="Universidad Tecnológica de Chile INACAP">
+        <a href="#" class="terms-link">TÉRMINOS Y CONDICIONES</a>
+    </header>
 
-    <table border="1">
-        <tr><td>hola</td></tr>
-    </table>
+    <main>
+        <h1>LIBRERÍA INACAP</h1>
+        <p>Libros que viajan contigo, préstamo a tu alcance.</p>
+        <div class="buttons">
+            <a href="#" class="button primary">Préstamo de libro</a>
+            <a href="#" class="button secondary">Administración de biblioteca</a>
+        </div>
+        <p class="footnote">Según estudios de la Universidad de Sussex, leer puede reducir el es</p>
+    </main>
+
+    <footer>
+        <!-- Añade el contenido del pie de página si es necesario -->
+    </footer>
+
+    <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>
