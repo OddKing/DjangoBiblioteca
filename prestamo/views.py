@@ -23,14 +23,15 @@ def prestamo_libro(request):
             try:
                 with transaction.atomic():
                     prestamo = form.save()
-                    messages.success(request, "Préstamo realizado con éxito.")
-                return redirect('index')  # o a donde quieras redirigir después del préstamo
+                    messages.success(request, "¡Préstamo realizado con éxito!")
+                    return render(request, 'prestamo_confirmacion.html', {'prestamo': prestamo})
             except Exception as e:
                 messages.error(request, f"Error al realizar el préstamo: {str(e)}")
     else:
         form = PrestamoForm()
     
     return render(request, 'prestamo_libro.html', {'form': form})
+
 @login_required
 def admin_biblioteca(request):
     return render(request, 'admin_biblioteca.html')

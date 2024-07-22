@@ -3,14 +3,42 @@
 {% block content %}
 <h1>Préstamo Realizado con Éxito</h1>
 
-<div class="prestamo-details">
-    <p><strong>Libro:</strong> {{ prestamo.codigoLibro.titulo }}</p>
-    <p><strong>Usuario:</strong> {{ prestamo.RUTUsuario.nombre }} (RUT: {{ prestamo.RUTUsuario.RUT }})</p>
-    <p><strong>Fecha de Préstamo:</strong> {{ prestamo.fechaPrestamo }}</p>
-    <p><strong>Fecha de Devolución:</strong> {{ prestamo.fechaVencimiento }}</p>
-</div>
+{% if prestamo %}
+    <div class="prestamo-details">
+        <p><strong>Libro:</strong> {{ prestamo.codigoLibro.titulo }}</p>
+        <p><strong>Usuario:</strong> {{ prestamo.RUTUsuario.nombre }} (RUT: {{ prestamo.RUTUsuario.RUT }})</p>
+        <p><strong>Fecha de Préstamo:</strong> {{ prestamo.fechaPrestamo }}</p>
+        <p><strong>Fecha de Devolución:</strong> {{ prestamo.fechaVencimiento }}</p>
+    </div>
 
-<p>Por favor, asegúrese de devolver el libro antes de la fecha de devolución indicada.</p>
+    <p>Por favor, asegúrese de devolver el libro antes de la fecha de devolución indicada.</p>
+{% else %}
+    <p>No se encontró información del préstamo.</p>
+{% endif %}
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
 
 <a href="{% url 'index' %}" class="btn btn-primary">Volver al Inicio</a>
+
+<!-- Script para el confeti -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+<script>
+    // Función para lanzar el confeti
+    function lanzarConfeti() {
+        confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 }
+        });
+    }
+
+    // Lanzar confeti cuando se carga la página
+    window.onload = lanzarConfeti;
+</script>
 {% endblock %}
