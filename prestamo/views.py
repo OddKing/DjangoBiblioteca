@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate, login
-
+from django.contrib.auth import authenticate, login, logout
 
 @login_required
 def index(request):
@@ -25,7 +24,7 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('home')  # Redirige a la página principal después del login
+            return redirect('index')  # Redirige a la página principal después del login
         else:
             # Mensaje de error si la autenticación falla
             return render(request, 'login.html', {'error': 'Credenciales inválidas'})
@@ -33,4 +32,4 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('home')
+    return redirect('index')
