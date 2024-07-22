@@ -4,6 +4,9 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import authenticate, login, logout
 from .models import Prestamo, TipoUsuario
 from django.utils import timezone
+from .forms import PrestamoForm
+from django.contrib import messages
+from django.db import transaction
 
 @login_required
 def index(request):
@@ -14,8 +17,20 @@ def index(request):
 
 @login_required
 def prestamo_libro(request):
-    return render(request, 'prestamo_libro.html')
-
+    if request.method == 'POST':
+        form = PrestamoForm(request.POST)
+        if form.is_valid():
+            try:
+                with transaction.atomic():
+                    prestamo = form.save()
+                    messages.success(request, "Préstamo realizado con éxito.")
+                return redirect('index')  # o a donde quieras redirigir después del préstamo
+            except Exception as e:
+                messages.error(request, f"Error al realizar el préstamo: {str(e)}")
+    else:
+        form = PrestamoForm()
+    
+    return render(request, 'prestamo_libro.html', {'form': form})
 @login_required
 def admin_biblioteca(request):
     return render(request, 'admin_biblioteca.html')

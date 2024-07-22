@@ -3,5 +3,29 @@
 {% block content %}
 <h1>Préstamo de Libro</h1>
 <p>Aquí puedes gestionar el préstamo de libros.</p>
-<!-- Agrega aquí el formulario o la lógica para préstamos -->
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="form-group">
+        {{ form.codigoLibro.errors }}
+        <label for="{{ form.codigoLibro.id_for_label }}">Libro:</label>
+        {{ form.codigoLibro }}
+    </div>
+    <div class="form-group">
+        {{ form.RUT_usuario.errors }}
+        <label for="{{ form.RUT_usuario.id_for_label }}">RUT del Usuario:</label>
+        {{ form.RUT_usuario }}
+    </div>
+    <button type="submit" class="btn btn-primary">Realizar Préstamo</button>
+</form>
+
 {% endblock %}

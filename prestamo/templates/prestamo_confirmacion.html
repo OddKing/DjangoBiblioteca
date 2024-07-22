@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Préstamo Realizado con Éxito</h1>
+
+<div class="prestamo-details">
+    <p><strong>Libro:</strong> {{ prestamo.codigoLibro.titulo }}</p>
+    <p><strong>Usuario:</strong> {{ prestamo.RUTUsuario.nombre }} (RUT: {{ prestamo.RUTUsuario.RUT }})</p>
+    <p><strong>Fecha de Préstamo:</strong> {{ prestamo.fechaPrestamo }}</p>
+    <p><strong>Fecha de Devolución:</strong> {{ prestamo.fechaVencimiento }}</p>
+</div>
+
+<p>Por favor, asegúrese de devolver el libro antes de la fecha de devolución indicada.</p>
+
+<a href="{% url 'index' %}" class="btn btn-primary">Volver al Inicio</a>
+{% endblock %}
