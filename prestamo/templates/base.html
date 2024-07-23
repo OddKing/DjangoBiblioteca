@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <img src="{% static 'img/logo.png' %}" alt="Universidad Tecnológica de Chile INACAP">
+        <img class="img1" src="{% static 'img/logo.png' %}" alt="Universidad Tecnológica de Chile INACAP">
         <div class="user-auth">
             {% if user.is_authenticated %}
                 <span>Bienvenido, {{ user.username }}!</span>
@@ -18,7 +18,7 @@
                 <a href="{% url 'login' %}">Iniciar sesión</a>
             {% endif %}
         </div>
-        <a href="#" class="terms-link">TÉRMINOS Y CONDICIONES</a>
+        <a href="{% url 'terminos_condiciones' %}" class="terms-link">TÉRMINOS Y CONDICIONES</a>
     </header>
 
     <main>
@@ -26,9 +26,25 @@
         {% endblock %}
     </main>
 
-    <footer>
-        <!-- Añade el contenido del pie de página si es necesario -->
-    </footer>
+    <footer id="CONTACTO" class="bg-dark text-light footer-container">
+            <div class="footer-row">
+                <div class="footer-column">
+                    <h2><b>CONTACTO</b></h2><br />
+                    <p><b>Dirección: Americo Vespucio #0315.</b></p>
+                    <p><b>Teléfono: 220351544</b></p>
+                    <p><b>Email: contacto@inacap.cl</b></p>
+                </div>
+                <div class="footer-column2">
+                    <h2><b>SIGUEME</b></h2> <br />
+                    <ul>
+                        <li><a class="text-light btn-outline-danger" href="https://www.facebook.com/official"Libreria Inacap"page" target="_blank" rel="noopener noreferrer"><b>Facebook</b></a></li>
+                        <li><a class="text-light btn-outline-danger" href="https://x.com/"Libreria Inacap"" target="_blank" rel="noopener noreferrer"><b>Twitter</b></a></li>
+                        <li><a class="text-light btn-outline-danger" href="https://www.instagram.com/"Libreria Inacap"/" target="_blank" rel="noopener noreferrer"><b>Instagram</b></a></li>
+                        <li><a class="text-light btn-outline-danger" href="https://www.linkedin.com/posts/wayne-worsham-664403274_chuck-norris-words-of-wisdom-selfconfidence-activity-7170579871792906240-6uLz?utm_source=share&utm_medium=member_desktop" target="_blank" rel="noopener noreferrer"><b>LinkedIn</b></a></li>
+                    </ul>
+                </div> 
+            </div>
+        </footer>
 
     <script src="{% static 'js/main.js' %}"></script>
 </body>

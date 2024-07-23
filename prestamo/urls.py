@@ -8,4 +8,7 @@ urlpatterns = [
     path('login/', views.login_view, name='login'),  # Ruta para iniciar sesión
     path('logout/', views.logout_view, name='logout'),  # Ruta para cerrar sesión
     path('encargado/listado-prestamos/', views.listado_prestamos, name='listado_prestamos'),
+    path('devolucion/', views.devolucion_libro, name='devolucion_libro'),
+    path('usuarios-con-deuda/', views.usuarios_con_deuda, name='usuarios_con_deuda'),
+    path('terminos-condiciones/', views.terminos_condiciones, name='terminos_condiciones'),
 ]

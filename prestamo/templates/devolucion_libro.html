@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Devolución de Libros</h2>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% if prestamos %}
+<form method="post">
+    {% csrf_token %}
+    <label for="prestamo_id">Seleccione el préstamo a devolver:</label>
+    <select name="prestamo_id" id="prestamo_id">
+        {% for prestamo in prestamos %}
+        <option value="{{ prestamo.idPrestamo }}">{{ prestamo.codigoLibro.titulo }} - {{ prestamo.RUTUsuario.nombre }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Devolver Libro</button>
+</form>
+{% else %}
+<p>No hay préstamos activos para devolver.</p>
+{% endif %}
+
+<a href="{% url 'index' %}">Volver al inicio</a>
+<!-- Script para el confeti -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+<script>
+    // Función para lanzar el confeti
+    function lanzarConfeti() {
+        confetti({
+            particleCount: 1000,
+            spread: 70,
+            origin: { y: 0.6 }
+        });
+    }
+
+    // Lanzar confeti cuando se carga la página
+    window.onload = lanzarConfeti;
+</script>
+{% endblock %}

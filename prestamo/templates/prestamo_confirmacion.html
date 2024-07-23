@@ -24,7 +24,7 @@
 </ul>
 {% endif %}
 
-<a href="{% url 'index' %}" class="btn btn-primary">Volver al Inicio</a>
+<a href="{% url 'index' %}">Volver al Inicio</a>
 
 <!-- Script para el confeti -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
@@ -32,7 +32,7 @@
     // Función para lanzar el confeti
     function lanzarConfeti() {
         confetti({
-            particleCount: 100,
+            particleCount: 1000,
             spread: 70,
             origin: { y: 0.6 }
         });
