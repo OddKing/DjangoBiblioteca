@@ -16,7 +16,9 @@ pw: lala123
 </head>
 <body>
     <header>
-        <img class="img1" src="{% static 'img/logo.png' %}" alt="Universidad Tecnológica de Chile INACAP">
+        <a href="{% url 'index' %}" class="logo__inacap">
+            <img class="img1" src="{% static 'img/logo.png' %}" alt="Universidad Tecnológica de Chile INACAP">
+        </a>
         <div class="user-auth">
             {% if user.is_authenticated %}
                 <span>Bienvenido, {{ user.username }}!</span>
@@ -35,7 +37,7 @@ pw: lala123
             <a href="{% url 'prestamo_libro' %}" class="button primary">Préstamo de libro</a>
             <a href="{% url 'listado_prestamos' %}" class="button secondary">Listado De Prestamos</a>
             <a href="{% url 'devolucion_libro' %}" class="button primary">Devolución de libro</a> </br>
-            <a href="{% url 'usuarios_con_deuda' %}" class="button warning">Usuarios con deuda</a>
+            <a href="{% url 'usuarios_con_deuda' %}" class="button auxiliar warning">Usuarios con deuda</a>
         </div>
     </main>
         <footer id="CONTACTO" class="bg-dark text-light footer-container">

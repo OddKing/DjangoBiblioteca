@@ -25,6 +25,7 @@ def usuarios_con_deuda(request):
     for prestamo in prestamos_vencidos:
         dias_retraso = (fecha_actual - prestamo.fechaVencimiento).days
         tipo_usuario = prestamo.RUTUsuario.idTipoUsuario.TipoUsuario.lower()
+        monto_deuda = dias_retraso * 1000  # $1.000 por día de retraso
 
         if (tipo_usuario == 'alumno' and dias_retraso > 7) or (tipo_usuario == 'docente' and dias_retraso > 20):
             usuarios_con_deuda.append({
@@ -32,7 +33,9 @@ def usuarios_con_deuda(request):
                 'libro': prestamo.codigoLibro,
                 'dias_retraso': dias_retraso,
                 'tipo_usuario': tipo_usuario,
-                'fecha_vencimiento': prestamo.fechaVencimiento
+                'fecha_vencimiento': prestamo.fechaVencimiento,
+                'en_deuda': True,
+                'monto_deuda': monto_deuda
             })
 
     return render(request, 'usuarios_con_deuda.html', {'usuarios_con_deuda': usuarios_con_deuda})

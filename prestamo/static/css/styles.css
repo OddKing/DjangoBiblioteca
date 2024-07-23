@@ -76,7 +76,7 @@ h1 {
     margin-top: 30px;
 }
 
-a{
+.auxiliar {
     color: white;
     background-color: red;
     padding: 5px;
@@ -138,7 +138,10 @@ a{
         margin: 10px;
     }
 }
-/* Añade esto a tu archivo CSS existente */
+
+a.logo__inacap {
+    background-color: transparent;
+}
 
 .user-auth {
     margin-left: auto;
