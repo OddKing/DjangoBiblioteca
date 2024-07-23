@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required, user_passes_test
@@ -149,3 +150,7 @@ def listado_prestamos(request):
     }
     
     return render(request, 'listado_prestamos.html', context)
+
+
+def terminos_condiciones(request):
+    return render(request, 'terminos_condiciones.html')
