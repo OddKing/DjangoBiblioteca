@@ -135,7 +135,7 @@ a{
     }
 
     .button {
-        margin: 10px 0;
+        margin: 10px;
     }
 }
 /* Añade esto a tu archivo CSS existente */
@@ -152,13 +152,16 @@ a{
 }
 
 form {
-    max-width: 300px;
+    max-width: 400px;   
     height: 200px;
     margin: 0 auto;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.668);
     padding: 50px;
     border-radius: 5px;
     color: black;
+}
+.form-group{
+    width: 100%;
 }
 
 form div {
@@ -171,7 +174,7 @@ form label {
 }
 
 form input {
-    width: 100%;
+    width: 50%;
     padding: 5px;
 }
 
