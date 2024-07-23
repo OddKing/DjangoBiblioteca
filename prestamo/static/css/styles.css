@@ -55,6 +55,10 @@ nav ul li a, .terms-link {
     padding: 10px 15px;
     border-radius: 5px;
 }
+.terms-link:hover{
+    background-color: yellow;
+    color: black;
+}
 
 /* Main content */
 main {
@@ -72,7 +76,12 @@ h1 {
     margin-top: 30px;
 }
 
-
+a{
+    color: white;
+    background-color: red;
+    padding: 5px;
+    margin-top: 12px;
+}
 
 .button {
     display: inline-block;
@@ -89,13 +98,17 @@ h1 {
     color: white;
 }
 
-
+.primary:hover{
+    background-color: red;
+}
 
 .secondary {
     background-color: white;
     color: black;
 }
-
+.secondary:hover{
+    background-color: red;
+}
 
 
 .footnote {
@@ -189,57 +202,84 @@ table {
     margin: auto;
     font-size: 20px;
     border: 1px solid;
+    margin-top: 80px;
 }
 
 .prestamo-details {
-    border: 1px solid;
+    border: 3px solid;
+    background-color: rgba(0, 0, 0, 0.678);
+}
+
+/**ESTILOS PARA EL FOOTER**/
+.footer-container {
+width: 100%;
+margin-top: 10px;
+color: #ffffff;
+font-size: 15px;
+margin-top: 300px;
+background-color: rgba(0, 0, 0, 0.61);
+}
+/**CONTENEDOR PARA AMBOS LADOS DEL FOOTER**/
+.footer-row {
+display: flex;
+justify-content: space-between;
+width: 100%;
+max-width: 1200px;
+margin: 0 auto;
+padding: 0 -30px;
 }
 
 .footer-column {
-  flex: 1;
-  text-align: left;
-  padding: 20px;
-  max-width: 500px;
+flex: 1;
+text-align: left;
+padding: 20px;
+max-width: 500px;
 }
 .footer-column h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
+font-size: 24px;
+margin-bottom: 10px;
 }
 .footer-column ul {
-  list-style-type: none;
-  padding: 0;
+list-style-type: none;
+padding: 0;
 }
 .footer-column ul li {
-  margin-bottom: 10px;
+margin-bottom: 10px;
 }
 .footer-column ul li a {
-  color: black;
-  text-decoration: none;
+color: black;
+text-decoration: none;
 }
 .footer-column ul li a:hover {
-  text-decoration: underline;
+text-decoration: underline;
 }
 .footer-column2 {
-  flex: 1;
-  padding: 20px;
-  max-width: 500px;
-  text-align: right;
+flex: 1;
+padding: 20px;
+max-width: 500px;
+text-align: right;
 }
 .footer-column2 h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
+font-size: 24px;
+margin-bottom: 10px;
 }
 .footer-column2 ul {
-  list-style-type: none;
-  padding: 0;
+list-style-type: none;
+padding: 0;
 }
 .footer-column2 ul li {
-  margin-bottom: 10px;
+margin-bottom: 10px;
 }
 .footer-column2 ul li a {
-  color: black;
-  text-decoration: none;
+color: white;
+text-decoration: none;
+font-size: 20px;
 }
 .footer-column2 ul li a:hover {
-  text-decoration: underline;
+text-decoration: underline;
+}
+
+.img1{
+    width: 200px;
+    height: 100px;
 }
