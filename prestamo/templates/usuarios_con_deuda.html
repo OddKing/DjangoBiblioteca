@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Usuarios con Préstamos Vencidos</h2>
+
+{% if usuarios_con_deuda %}
+    <table>
+        <thead>
+            <tr>
+                <th>Usuario</th>
+                <th>Tipo de Usuario</th>
+                <th>Libro</th>
+                <th>Días de Retraso</th>
+                <th>Fecha de Vencimiento</th>
+                <th>En Deuda</th>
+                <th>MONTO ($)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for deuda in usuarios_con_deuda %}
+            <tr>
+                <td>{{ deuda.usuario.nombre }} ({{ deuda.usuario.RUT }})</td>
+                <td>{{ deuda.tipo_usuario|title }}</td>
+                <td>{{ deuda.libro.titulo }}</td>
+                <td>{{ deuda.dias_retraso }}</td>
+                <td>{{ deuda.fecha_vencimiento }}</td>
+                <td>{{ deuda.en_deuda|yesno:"Sí,No" }}</td>
+                <td>${{ deuda.monto_deuda }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No hay préstamos vencidos actualmente.</p>
+{% endif %}
+
+<a href="{% url 'index' %}">Volver al inicio</a>
+{% endblock %}

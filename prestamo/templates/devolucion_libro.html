@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Devolución de Libros</h2>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+{% if prestamos %}
+<form method="post">
+    {% csrf_token %}
+    <label for="prestamo_id">Seleccione el préstamo a devolver:</label>
+    <select name="prestamo_id" id="prestamo_id">
+        {% for prestamo in prestamos %}
+        <option value="{{ prestamo.idPrestamo }}">{{ prestamo.codigoLibro.titulo }} - {{ prestamo.RUTUsuario.nombre }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Devolver Libro</button>
+</form>
+{% else %}
+<p>No hay préstamos activos para devolver.</p>
+{% endif %}
+
+<a href="{% url 'index' %}">Volver al inicio</a>
+{% endblock %}

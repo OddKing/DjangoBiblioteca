@@ -21,7 +21,9 @@
         <p>Libros que viajan contigo, préstamo a tu alcance.</p>
         <div class="buttons">
             <a href="{% url 'prestamo_libro' %}" class="button primary">Préstamo de libro</a>
-            <a href="{% url 'listado_prestamos' %}" class="button secondary">Administración de biblioteca</a>
+            <a href="{% url 'listado_prestamos' %}" class="button secondary">Listado De Prestamos</a>
+            <a href="{% url 'devolucion_libro' %}" class="button primary">Devolución de libro</a> </br>
+            <a href="{% url 'usuarios_con_deuda' %}" class="button warning">Usuarios con deuda</a>
         </div>
     </main>
         <footer id="CONTACTO" class="bg-dark text-light footer-container">
