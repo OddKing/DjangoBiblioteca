@@ -27,5 +27,22 @@
     </div>
     <button type="submit" class="btn btn-primary">Realizar Préstamo</button>
 </form>
+<br> <br>
+    <a class="auxiliar" href="{% url 'index' %}">Volver al inicio</a> 
 
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+<script>
+    // Función para lanzar el confeti
+    function lanzarConfeti() {
+        confetti({
+            particleCount: 1000,
+            spread: 70,
+            origin: { y: 0.6 }
+        });
+    }
+
+    // Lanzar confeti cuando se carga la página
+    window.onload = lanzarConfeti;
+</script>
 {% endblock %}

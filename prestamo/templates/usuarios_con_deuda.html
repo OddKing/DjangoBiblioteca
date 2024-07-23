@@ -19,7 +19,7 @@
         <tbody>
             {% for deuda in usuarios_con_deuda %}
             <tr>
-                <td>{{ deuda.usuario.nombre }} ({{ deuda.usuario.RUT }})</td>
+                <td>{{ deuda.usuario.nombre }}({{ deuda.usuario.RUT }})</td>
                 <td>{{ deuda.tipo_usuario|title }}</td>
                 <td>{{ deuda.libro.titulo }}</td>
                 <td>{{ deuda.dias_retraso }}</td>
@@ -30,9 +30,10 @@
             {% endfor %}
         </tbody>
     </table>
+    <br> <br>
+    <a class="auxiliar" href="{% url 'index' %}">Volver al inicio</a> 
 {% else %}
     <p>No hay préstamos vencidos actualmente.</p>
 {% endif %}
 
-<a href="{% url 'index' %}">Volver al inicio</a>
 {% endblock %}

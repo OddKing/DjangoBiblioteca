@@ -9,13 +9,15 @@
 </head>
 <body>
     <header>
-        <img class="img1" src="{% static 'img/logo.png' %}" alt="Universidad Tecnológica de Chile INACAP">
+        <a href="{% url 'index' %}" class="logo__inacap">
+            <img class="img1" src="{% static 'img/logo.png' %}" alt="Universidad Tecnológica de Chile INACAP">
+        </a>
         <div class="user-auth">
             {% if user.is_authenticated %}
                 <span>Bienvenido, {{ user.username }}!</span>
-                <a href="{% url 'logout' %}">Cerrar sesión</a>
+                <a class="auxiliar" href="{% url 'logout' %}">Cerrar sesión</a>
             {% else %}
-                <a href="{% url 'login' %}">Iniciar sesión</a>
+                <a class="auxiliar" href="{% url 'login' %}">Iniciar sesión</a>
             {% endif %}
         </div>
         <a href="{% url 'terminos_condiciones' %}" class="terms-link">TÉRMINOS Y CONDICIONES</a>
