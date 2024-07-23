@@ -22,11 +22,13 @@
     </select>
     <button type="submit">Devolver Libro</button>
 </form>
+
 {% else %}
 <p>No hay préstamos activos para devolver.</p>
 {% endif %}
 
-<a href="{% url 'index' %}">Volver al inicio</a>
+<br> <br>
+    <a class="auxiliar" href="{% url 'index' %}">Volver al inicio</a> 
 <!-- Script para el confeti -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 <script>

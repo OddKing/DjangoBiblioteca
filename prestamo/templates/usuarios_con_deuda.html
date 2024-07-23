@@ -30,9 +30,10 @@
             {% endfor %}
         </tbody>
     </table>
+    <br> <br>
+    <a class="auxiliar" href="{% url 'index' %}">Volver al inicio</a> 
 {% else %}
     <p>No hay préstamos vencidos actualmente.</p>
 {% endif %}
 
-<a class="auxiliar" href="{% url 'index' %}">Volver al inicio</a>
 {% endblock %}
